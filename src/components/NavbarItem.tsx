@@ -8,23 +8,27 @@ import { usePathname } from "next/navigation";
 
 interface NavbarItemProps {
   item: Item;
+  isExpanded?: boolean;
 }
 
-export default function NavbarItem({ item }: NavbarItemProps) {
+export default function NavbarItem({ item, isExpanded }: NavbarItemProps) {
   const pathname = usePathname();
-  const isActive = item.url
-    ? pathname === item.url
-    : pathname === `/${item.name}`;
+  const itemPath = item.url ?? `/${item.name}`;
+  const isActive = pathname === itemPath || pathname.startsWith(`${itemPath}/`);
 
   return (
     <li>
       <Link
         href={item.url ?? `/${item.name}`}
+        title={!isExpanded ? item.name : undefined}
         className={clsx(
-          "group flex items-center gap-6 px-4 py-2 rounded-md transition-all duration-300 border-l-4",
+          "group border-transparent flex items-center py-2 rounded-md transition-all duration-300 ",
+          isExpanded
+            ? "px-4 gap-6 border-l-4"
+            : "px-0 justify-center border-l-2 ",
           isActive
-            ? "bg-light-blue/10 border-sith-red shadow-md shadow-light-blue/30"
-            : "hover:bg-white/10 border-transparent"
+            ? "bg-light-blue/10 border-sith-red! shadow-md shadow-light-blue/30"
+            : "hover:bg-white/10 "
         )}
       >
         <DynamicIcon
@@ -39,7 +43,10 @@ export default function NavbarItem({ item }: NavbarItemProps) {
         />
         <span
           className={clsx(
-            "font-semibold capitalize transition-colors",
+            "font-semibold capitalize transition-all duration-300 whitespace-nowrap overflow-hidden",
+            isExpanded
+              ? "opacity-100 translate-x-0 ml-2 w-24"
+              : "opacity-0 -translate-x-2 ml-0 w-0",
             isActive
               ? "text-light-blue-soft"
               : "text-white group-hover:text-light-blue-soft"
