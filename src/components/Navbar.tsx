@@ -18,8 +18,8 @@ export default function Navbar() {
   return (
     <nav
       className={clsx(
-        "transition-[width] duration-300 ease-in-out overflow-hidden w-fit flex flex-col gap-4 px-9 py-14 my-6 shadow-md",
-        "shadow-light-blue hover:shadow-lg hover:shadow-light-blue",
+        "min-w-fit transition-[width] duration-300 ease-in-out overflow-hidden w-fit flex flex-col gap-4 px-5 md:px-9 py-14 my-6 shadow-md",
+        "shadow-light-blue hover:shadow-lg hover:shadow-light-blue duration-1000",
         "bg-imperial-gray rounded-r-lg",
         isExpanded ? "w-60 px-6 py-14" : "w-20 px-4 py-6"
       )}
@@ -27,11 +27,11 @@ export default function Navbar() {
       <button
         onClick={handleToggle}
         className={clsx(
-          "h-11 flex items-center p-2 rounded-md transition-all duration-300 cursor-pointer text-white border-transparent hover:bg-white/10 hover:text-light-blue-soft",
+          "min-w-fit h-11 flex items-center p-2 rounded-md transition-all duration-300 cursor-pointer text-white border-transparent hover:bg-white/10 hover:text-light-blue-soft",
           isExpanded ? "gap-6 justify-start" : "justify-center"
         )}
       >
-        <DynamicIcon name="menu" aria-hidden="true" />
+        <DynamicIcon name="menu" aria-hidden="true" size={24} />
         <span
           className={clsx(
             "overflow-hidden whitespace-nowrap transition-all duration-300 font-bold text-xl",
@@ -43,7 +43,7 @@ export default function Navbar() {
           Menu
         </span>
       </button>
-      <ul className="flex flex-col gap-4">
+      <ul className="flex flex-col gap-4 min-w-fit">
         {ITEMS.map((item) => (
           <NavbarItem key={item.name} item={item} isExpanded={isExpanded} />
         ))}

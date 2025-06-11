@@ -17,15 +17,15 @@ export default function NavbarItem({ item, isExpanded }: NavbarItemProps) {
   const isActive = pathname === itemPath || pathname.startsWith(`${itemPath}/`);
 
   return (
-    <li>
+    <li className="min-w-fit">
       <Link
         href={item.url ?? `/${item.name}`}
         title={!isExpanded ? item.name : undefined}
         className={clsx(
-          "group border-transparent flex items-center py-2 rounded-md transition-all duration-300 ",
+          "min-w-fit group border-transparent flex items-center py-2 rounded-md transition-all duration-300 ",
           isExpanded
             ? "px-4 gap-6 border-l-4"
-            : "px-0 justify-center border-l-2 ",
+            : "px-2 justify-center border-l-2 ",
           isActive
             ? "bg-light-blue/10 border-sith-red! shadow-md shadow-light-blue/30"
             : "hover:bg-white/10 "
@@ -33,6 +33,7 @@ export default function NavbarItem({ item, isExpanded }: NavbarItemProps) {
       >
         <DynamicIcon
           name={item.icon}
+          size={24}
           className={clsx(
             "transition-colors",
             isActive
