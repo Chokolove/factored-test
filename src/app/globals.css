@@ -5,4 +5,19 @@
   --color-light-blue-soft: #64a5f5;
   --color-sith-red: #d32f2f;
   --color-imperial-gray: #3a3a3a;
+
+  --animate-wiggle: wiggle 1s ease-in-out infinite;
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(4px);
+    }
+  }
+}
+
+body {
+  height: 100%;
 }

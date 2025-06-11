@@ -1,3 +1,64 @@
+import CustomLinks from "@/components/CustomLinks";
+import FeaturedFilmCard from "@/components/FeaturedFilmCard";
+import HeroCard from "@/components/HeroCard";
+import React from "react";
+
+const TITLE = "In a galaxy far, far away…";
+
+const introText = (
+  <p className="text-base">
+    You&apos;ve landed on the ultimate{" "}
+    <strong>Star Wars Film and Character Explorer!</strong>
+    <br />
+    Search, filter, and discover your favorite heroes, villains, and droids from
+    across the galaxy.
+    <br />
+    Whether you&apos;re a Rebel, a Sith, or just a curious Jawa —{" "}
+    <em>the Force brought you here.</em>
+  </p>
+);
+
+const HEROCARDS = [
+  {
+    title: "Jedi – Whisper of the Light",
+    text: "In silence, they move—guardians of peace, wielding the Force not for glory, but for balance. Cloaked in robes and resolve, Jedi listen more than they speak, and act only when the galaxy demands it. Yet even the brightest star casts a shadow...",
+    tagline: "But what happens when the light begins to question itself?",
+    imgUrl: "https://media.brisa-bbb.com/sw-fanPage/jedi.jpg",
+  },
+  {
+    title: "Sith – Echoes of the Dark",
+    text: "Passion fuels them. Power defines them. The Sith rise not in secret, but with purpose—unafraid to claim what others fear to seek. Their strength is forged in fire, their will unbreakable.",
+    tagline:
+      "And when the darkness grows, who dares to stop it—if they even want to?",
+    imgUrl: "https://media.brisa-bbb.com/sw-fanPage/sith.jpg",
+  },
+];
+
 export default function Home() {
-  return <div className="text-white">Main page</div>;
+  return (
+    <div className="flex flex-col text-white p-4 sm:p-10 gap-10 max-w-7xl w-full mx-auto">
+      <div className="flex flex-col gap-4 items-center text-center">
+        <h2 className="text-2xl font-bold">{TITLE}</h2>
+        {introText}
+      </div>
+      <div className="flex gap-4 items-center">
+        <div className="flex items-stretch flex-col gap-4 lg:gap-0 lg:flex-row">
+          {HEROCARDS.map((card, index) => (
+            <HeroCard key={index} {...card} isLeft={index % 2 !== 0} />
+          ))}
+        </div>
+      </div>
+      <CustomLinks
+        url="/characters"
+        ariaLabel="Navigate to Star Wars characters page"
+        text="Check out the characters"
+      />
+      <FeaturedFilmCard />
+      <CustomLinks
+        url="/films"
+        ariaLabel="Navigate to Star Wars films page"
+        text="Check out the films"
+      />
+    </div>
+  );
 }

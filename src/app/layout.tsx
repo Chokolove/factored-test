@@ -1,3 +1,4 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -13,10 +14,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased flex flex-row w-full min-h-screen bg-black">
+    <html lang="en" className="h-full">
+      <body className="antialiased flex flex-row w-full min-h-screen h-full bg-black gap-6">
         <Navbar />
-        {children}
+        <main className="w-full flex-1 my-6 bg-imperial-gray rounded-lg mr-6 shadow-md shadow-light-blue hover:shadow-lg transition-shadow duration-1000 overflow-x-auto">
+          {children}
+        </main>
       </body>
     </html>
   );
