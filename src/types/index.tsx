@@ -1,6 +1,6 @@
 export interface Item {
   name: string;
-  icon: "film" | "users" | "home";
+  icon: "film" | "users" | "home" | "ship";
   url?: string;
 }
 interface filmProperty {
@@ -44,7 +44,7 @@ export interface FilmsApiResponse {
   timestamp: string;
 }
 
-interface PersonProperties {
+export interface PersonProperties {
   birth_year: string;
   created: string;
   edited: string;
@@ -58,22 +58,42 @@ interface PersonProperties {
   skin_color: string;
   url: string;
 }
-export interface Person {
+export interface StarshipProperties {
+  MGLT: string;
+  cargo_capacity: string;
+  consumables: string;
+  cost_in_credits: string;
+  created: string;
+  crew: string;
+  edited: string;
+  films: string[];
+  hyperdrive_rating: string;
+  length: string;
+  manufacturer: string;
+  max_atmosphering_speed: string;
+  model: string;
+  name: string;
+  passengers: string;
+  pilots: string[];
+  starship_class: string;
+  url: string;
+}
+export interface Entity<T = PersonProperties | StarshipProperties> {
   uid: string;
   _id: string;
   __v: number;
   description: string;
-  url: string;
-  properties: PersonProperties;
+  url?: string;
+  properties: T;
 }
 
-export interface PeopleApiResponse {
+export interface ApiWithPaginationResponse<T> {
   apiVersion: string;
   message: string;
   next: string | null;
   previous: string | null;
-  results: Person[];
-  result: Person[];
+  results: Entity<T>[];
+  result: Entity<T>[];
   social: {
     discord: string;
     reddit: string;

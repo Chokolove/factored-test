@@ -9,6 +9,7 @@ const ITEMS: Item[] = [
   { name: "home", icon: "home", url: "/" },
   { name: "films", icon: "film" },
   { name: "characters", icon: "users" },
+  { name: "starships", icon: "ship" },
 ];
 export default function Navbar() {
   const [isExpanded, setIsExpanded] = useState(false);

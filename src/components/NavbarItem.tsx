@@ -4,12 +4,13 @@ import { Item } from "@/types";
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Film, Users } from "lucide-react";
+import { Home, Film, Users, Ship } from "lucide-react";
 
 const icons = {
   home: Home,
   film: Film,
   users: Users,
+  ship: Ship,
 };
 
 interface NavbarItemProps {

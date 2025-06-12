@@ -7,7 +7,6 @@ import SearchFilter from "@/components/SearchFilter";
 import SkeletonRow from "@/components/SkeletonRow";
 import Table from "@/components/Table";
 import { useGetCharactersQuery } from "@/redux/services/peopleApi";
-import { Person } from "@/types";
 import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 
@@ -56,16 +55,19 @@ export default function Characters() {
 
       {!isLoading && data && (
         <div>
-          <SearchFilter
-            value={name}
-            onChange={setName}
-            isLoading={isFetching || isLoading}
-          />
+          <div className="flex justify-center">
+            <SearchFilter
+              placeholder="Search by name"
+              value={name}
+              onChange={setName}
+              isLoading={isFetching || isLoading}
+            />
+          </div>
 
           <Table
             tableHeaders={HEADERS}
             data={people}
-            renderRow={(film: Person, index) => {
+            renderRow={(film, index) => {
               return isFetching ? (
                 [...Array(1)].map((_, index) => (
                   <SkeletonRow
