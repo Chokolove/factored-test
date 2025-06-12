@@ -7,11 +7,7 @@ interface CustomLinksProps {
   text: string;
 }
 
-export default function CustomLinks({
-  url,
-  ariaLabel,
-  text,
-}: CustomLinksProps) {
+export default function CustomLink({ url, ariaLabel, text }: CustomLinksProps) {
   return (
     <Link
       href={url}

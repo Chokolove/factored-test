@@ -1,5 +1,5 @@
 import Container from "@/components/Container";
-import CustomLinks from "@/components/CustomLinks";
+import CustomLink from "@/components/CustomLink";
 import FeaturedFilmCard from "@/components/FeaturedFilmCard";
 import HeroCard from "@/components/HeroCard";
 import IntroText from "@/components/IntroText";
@@ -45,13 +45,13 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <CustomLinks
+      <CustomLink
         url="/characters"
         ariaLabel="Navigate to Star Wars characters page"
         text="Check out the characters"
       />
       <FeaturedFilmCard />
-      <CustomLinks
+      <CustomLink
         url="/films"
         ariaLabel="Navigate to Star Wars films page"
         text="Check out the films"
