@@ -28,7 +28,11 @@ export default function HeroCard({
       <div className={"p-4 min-w-60 flex flex-col gap-4"}>
         <AnimatedTitle
           title={title}
-          color={isLeft ? "sith-red" : "light-blue-soft"}
+          hoverClass={
+            isLeft
+              ? "group-hover:text-sith-red"
+              : "group-hover:text-light-blue-soft"
+          }
         />
         <p className="text-sm">{text}</p>
         <p className="text-sm italic">{tagline}</p>
