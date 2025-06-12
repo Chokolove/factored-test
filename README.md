@@ -1,6 +1,6 @@
-# Star Wars Character Explorer 🌌
+# Star Wars Character and Film Explorer 🌌
 
-Explore Star Wars characters by name with real-time filtering and pagination.
+Explore Star Wars characters by name with real-time filtering and pagination and film explorer!.
 
 ## Getting Started
 
