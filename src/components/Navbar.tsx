@@ -19,8 +19,8 @@ export default function Navbar() {
   return (
     <nav
       className={clsx(
-        "min-w-fit transition-[width] duration-300 ease-in-out overflow-hidden w-fit flex flex-col gap-4 px-5 md:px-9 py-14 my-6 shadow-md",
-        "shadow-light-blue hover:shadow-lg hover:shadow-light-blue duration-1000",
+        "min-w-fit transition-[width] duration-75 ease-in-out overflow-hidden w-fit flex flex-col gap-4 px-5 md:px-9 py-14 my-6 shadow-md",
+        "shadow-light-blue hover:shadow-lg hover:shadow-light-blue duration-75",
         "bg-imperial-gray rounded-r-lg",
         isExpanded ? "w-60 px-6 py-14" : "w-20 px-4 py-6"
       )}
@@ -28,14 +28,14 @@ export default function Navbar() {
       <button
         onClick={handleToggle}
         className={clsx(
-          "min-w-fit h-11 flex items-center p-2 rounded-md transition-all duration-300 cursor-pointer text-white border-transparent hover:bg-white/10 hover:text-light-blue-soft",
+          "min-w-fit h-11 flex items-center p-2 rounded-md transition-all duration-75 cursor-pointer text-white border-transparent hover:bg-white/10 hover:text-light-blue-soft",
           isExpanded ? "gap-6 justify-start" : "justify-center"
         )}
       >
         <Menu aria-hidden="true" size={24} />
         <span
           className={clsx(
-            "overflow-hidden whitespace-nowrap transition-all duration-300 font-bold text-xl",
+            "overflow-hidden whitespace-nowrap transition-all duration-75 font-bold text-xl",
             isExpanded
               ? "ml-2 opacity-100 translate-x-0 w-auto"
               : "ml-0 opacity-0 -translate-x-2 w-0"

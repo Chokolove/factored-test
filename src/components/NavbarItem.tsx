@@ -30,7 +30,7 @@ export default function NavbarItem({ item, isExpanded }: NavbarItemProps) {
         href={item.url ?? `/${item.name}`}
         title={!isExpanded ? item.name : undefined}
         className={clsx(
-          "min-w-fit group border-transparent flex items-center py-2 rounded-md transition-all duration-300 ",
+          "min-w-fit group border-transparent flex items-center py-2 rounded-md transition-all duration-75 ",
           isExpanded
             ? "px-4 gap-6 border-l-4"
             : "px-2 justify-center border-l-2 ",
@@ -51,7 +51,7 @@ export default function NavbarItem({ item, isExpanded }: NavbarItemProps) {
         />
         <span
           className={clsx(
-            "font-semibold capitalize transition-all duration-300 whitespace-nowrap overflow-hidden",
+            "font-semibold capitalize transition-all duration-75 whitespace-nowrap overflow-hidden",
             isExpanded
               ? "opacity-100 translate-x-0 ml-2 w-24"
               : "opacity-0 -translate-x-2 ml-0 w-0",

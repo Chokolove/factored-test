@@ -66,6 +66,8 @@ export default function Home() {
       <FeaturedCard
         imgUrl="https://media.brisa-bbb.com/sw-fanPage/starships.jpg"
         title="The Vessels of the Void"
+        shadowHoverColor="hover:shadow-purple-saber"
+        textHoverColor="group-hover:text-purple-saber-soft"
         text="From the sleek silhouette of the X-wing to the ominous bulk of 
             the Star Destroyer, starships have shaped the fate of the galaxy. 
             In battles above Coruscant and chases through asteroid fields, these ships carry smugglers, 

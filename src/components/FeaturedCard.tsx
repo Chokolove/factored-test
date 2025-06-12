@@ -7,6 +7,8 @@ interface FeaturedCardProps {
   isReverse?: boolean;
   title: string;
   text: string;
+  shadowHoverColor?: string;
+  textHoverColor?: string;
 }
 
 export default function FeaturedCard({
@@ -14,12 +16,15 @@ export default function FeaturedCard({
   isReverse = false,
   title,
   text,
+  shadowHoverColor,
+  textHoverColor,
 }: FeaturedCardProps) {
   return (
     <div
       className={clsx(
         "group  border border-white flex flex-col rounded-lg",
-        "bg-imperial-gray shadow-lg hover:shadow-consul-green text-white transition-shadow duration-1000",
+        "bg-imperial-gray shadow-lg  text-white transition-shadow duration-1000",
+        shadowHoverColor ?? "hover:shadow-consul-green",
         isReverse ? "md:flex-row-reverse" : "md:flex-row"
       )}
     >
@@ -41,7 +46,7 @@ export default function FeaturedCard({
         <div className="p-6 flex flex-col justify-center gap-4 flex-1">
           <AnimatedTitle
             title={title}
-            hoverClass="group-hover:text-consul-green"
+            hoverClass={textHoverColor ?? "group-hover:text-consul-green"}
           />
           <p className="text-sm text-white/80">{text}</p>
         </div>
