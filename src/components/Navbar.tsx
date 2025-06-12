@@ -1,9 +1,9 @@
 "use client";
-import { DynamicIcon } from "lucide-react/dynamic";
 import NavbarItem from "./NavbarItem";
 import { Item } from "@/types";
 import { useState } from "react";
 import clsx from "clsx";
+import { Menu } from "lucide-react";
 
 const ITEMS: Item[] = [
   { name: "home", icon: "home", url: "/" },
@@ -31,7 +31,7 @@ export default function Navbar() {
           isExpanded ? "gap-6 justify-start" : "justify-center"
         )}
       >
-        <DynamicIcon name="menu" aria-hidden="true" size={24} />
+        <Menu aria-hidden="true" size={24} />
         <span
           className={clsx(
             "overflow-hidden whitespace-nowrap transition-all duration-300 font-bold text-xl",

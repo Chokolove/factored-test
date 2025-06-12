@@ -1,9 +1,9 @@
+import Container from "@/components/Container";
 import CustomLinks from "@/components/CustomLinks";
 import FeaturedFilmCard from "@/components/FeaturedFilmCard";
 import HeroCard from "@/components/HeroCard";
+import IntroText from "@/components/IntroText";
 import React from "react";
-
-const TITLE = "In a galaxy far, far away…";
 
 const introText = (
   <p className="text-base">
@@ -36,11 +36,8 @@ const HEROCARDS = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col text-white p-4 sm:p-10 gap-10 max-w-7xl w-full mx-auto">
-      <div className="flex flex-col gap-4 items-center text-center">
-        <h2 className="text-2xl font-bold">{TITLE}</h2>
-        {introText}
-      </div>
+    <Container>
+      <IntroText title="In a galaxy far, far away…" text={introText} />
       <div className="flex gap-4 items-center">
         <div className="flex items-stretch flex-col gap-4 lg:gap-0 lg:flex-row">
           {HEROCARDS.map((card, index) => (
@@ -59,6 +56,6 @@ export default function Home() {
         ariaLabel="Navigate to Star Wars films page"
         text="Check out the films"
       />
-    </div>
+    </Container>
   );
 }

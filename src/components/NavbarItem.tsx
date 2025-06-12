@@ -2,9 +2,15 @@
 
 import { Item } from "@/types";
 import clsx from "clsx";
-import { DynamicIcon } from "lucide-react/dynamic";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Home, Film, Users } from "lucide-react";
+
+const icons = {
+  home: Home,
+  film: Film,
+  users: Users,
+};
 
 interface NavbarItemProps {
   item: Item;
@@ -15,6 +21,7 @@ export default function NavbarItem({ item, isExpanded }: NavbarItemProps) {
   const pathname = usePathname();
   const itemPath = item.url ?? `/${item.name}`;
   const isActive = pathname === itemPath || pathname.startsWith(`${itemPath}/`);
+  const Icon = icons[item.icon as keyof typeof icons];
 
   return (
     <li className="min-w-fit">
@@ -31,8 +38,7 @@ export default function NavbarItem({ item, isExpanded }: NavbarItemProps) {
             : "hover:bg-white/10 "
         )}
       >
-        <DynamicIcon
-          name={item.icon}
+        <Icon
           size={24}
           className={clsx(
             "transition-colors",
