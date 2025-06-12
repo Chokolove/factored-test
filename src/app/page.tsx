@@ -1,6 +1,6 @@
 import Container from "@/components/Container";
 import CustomLink from "@/components/CustomLink";
-import FeaturedFilmCard from "@/components/FeaturedFilmCard";
+import FeaturedCard from "@/components/FeaturedCard";
 import HeroCard from "@/components/HeroCard";
 import IntroText from "@/components/IntroText";
 import React from "react";
@@ -50,11 +50,32 @@ export default function Home() {
         ariaLabel="Navigate to Star Wars characters page"
         text="Check out the characters"
       />
-      <FeaturedFilmCard />
+      <FeaturedCard
+        imgUrl="https://media.brisa-bbb.com/sw-fanPage/movies.jpg"
+        title="The Saga of the Stars"
+        text="From the twin suns of Tatooine to the icy fields of Hoth, the Star
+            Wars films have told tales of hope, darkness, and redemption. Across
+            generations, heroes rise, villains fall, and the Force weaves their
+            destinies together."
+      />
       <CustomLink
         url="/films"
         ariaLabel="Navigate to Star Wars films page"
         text="Check out the films"
+      />
+      <FeaturedCard
+        imgUrl="https://media.brisa-bbb.com/sw-fanPage/starships.jpg"
+        title="The Vessels of the Void"
+        text="From the sleek silhouette of the X-wing to the ominous bulk of 
+            the Star Destroyer, starships have shaped the fate of the galaxy. 
+            In battles above Coruscant and chases through asteroid fields, these ships carry smugglers, 
+            soldiers, and legends — each hyperspace jump echoing with the stories of rebellion, empire, and destiny."
+        isReverse
+      />
+      <CustomLink
+        url="/starships"
+        ariaLabel="Navigate to Star Wars ships page"
+        text="Check out the ships"
       />
     </Container>
   );
