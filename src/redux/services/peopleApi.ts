@@ -2,6 +2,10 @@ import { PeopleApiResponse } from "@/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+interface QueryParams {
+  page?: number;
+  name?: string;
+}
 
 export const peopleApi = createApi({
   reducerPath: "characterApi",
@@ -10,10 +14,10 @@ export const peopleApi = createApi({
   }),
   tagTypes: ["People"],
   endpoints: (builder) => ({
-    getCharacters: builder.query<PeopleApiResponse, number>({
-      query: (page = 1) => ({
+    getCharacters: builder.query<PeopleApiResponse, QueryParams>({
+      query: ({ page = 1, name }) => ({
         url: "/people",
-        params: { expanded: true, page, limit: 5 },
+        params: { expanded: true, page, limit: 5, name },
       }),
       providesTags: ["People"],
     }),

@@ -73,6 +73,7 @@ export interface PeopleApiResponse {
   next: string | null;
   previous: string | null;
   results: Person[];
+  result: Person[];
   social: {
     discord: string;
     reddit: string;

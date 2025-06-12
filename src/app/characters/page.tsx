@@ -3,11 +3,13 @@ import Container from "@/components/Container";
 import IntroText from "@/components/IntroText";
 import Pagination from "@/components/Pagination";
 import RequestFeedback from "@/components/RequestFeedback";
+import SearchFilter from "@/components/SearchFilter";
 import SkeletonRow from "@/components/SkeletonRow";
 import Table from "@/components/Table";
 import { useGetCharactersQuery } from "@/redux/services/peopleApi";
 import { Person } from "@/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDebounce } from "use-debounce";
 
 const introText = (
   <p className="text-base text-white">
@@ -33,8 +35,18 @@ const HEADERS = [
 ];
 export default function Characters() {
   const [page, setPage] = useState(1);
-  const { data, isLoading, isFetching, isError } = useGetCharactersQuery(page);
-  const people = data?.results;
+  const [name, setName] = useState("");
+  const [debounceName] = useDebounce(name, 500);
+  const { data, isLoading, isFetching, isError } = useGetCharactersQuery({
+    page,
+    name: debounceName,
+  });
+  const people = data?.results ?? data?.result ?? [];
+  const showPagination = !name && data?.total_pages && people?.length > 0;
+
+  useEffect(() => {
+    setPage(1);
+  }, [name]);
 
   return (
     <Container>
@@ -42,11 +54,14 @@ export default function Characters() {
 
       <RequestFeedback isError={isError} isLoading={isLoading} />
 
-      {!isLoading && people && (
+      {!isLoading && data && (
         <div>
-          <div className="flex justify-center max-w-fit mx-auto border border-white rounded-lg items-center">
-            <input type="text" className="p-2 rounded-md border" />
-          </div>
+          <SearchFilter
+            value={name}
+            onChange={setName}
+            isLoading={isFetching || isLoading}
+          />
+
           <Table
             tableHeaders={HEADERS}
             data={people}
@@ -80,18 +95,20 @@ export default function Characters() {
               );
             }}
           />
-          <Pagination
-            previesPage={() =>
-              setPage((prev) => (prev - 1 === 0 ? 1 : prev - 1))
-            }
-            nextPage={() =>
-              setPage((prev) => (prev + 1 > data.total_pages ? 1 : prev + 1))
-            }
-            page={page}
-            setPage={setPage}
-            totalPages={data.total_pages}
-            isFetching={isFetching}
-          />
+          {showPagination && (
+            <Pagination
+              previesPage={() =>
+                setPage((prev) => (prev - 1 === 0 ? 1 : prev - 1))
+              }
+              nextPage={() =>
+                setPage((prev) => (prev + 1 > data.total_pages ? 1 : prev + 1))
+              }
+              page={page}
+              setPage={setPage}
+              totalPages={data.total_pages}
+              isFetching={isFetching}
+            />
+          )}
         </div>
       )}
     </Container>
