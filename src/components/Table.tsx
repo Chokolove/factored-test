@@ -12,7 +12,7 @@ export default function Table<T>({
   renderRow,
 }: TableProps<T>) {
   return (
-    <div className="overflow-x-auto mt-8 rounded-lg shadow-lg shadow-consul-green bg-imperial-gray border border-gray-600">
+    <div className="overflow-x-auto mt-4 rounded-lg shadow-lg shadow-consul-green bg-imperial-gray border border-gray-600">
       <table className="min-w-full table-auto text-sm text-white rounded-lg">
         <TableHeaders tableHeaders={tableHeaders} />
         <tbody>{data.map(renderRow)}</tbody>
